@@ -1,0 +1,94 @@
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models import Sum
+from django.db.models.functions import Coalesce
+
+
+news = 'NS'
+article = 'AR'
+
+POST_TYPES = [
+    (news, 'Новость'),
+    (article, 'Статья'),
+    ]
+
+world_events = 'WE'
+politics = 'PO'
+culture = 'CU'
+economics = 'EC'
+science = 'SC'
+sport = 'SP'
+
+CATEGORY_NEWS = [
+    (world_events, 'мировые события'),
+    (politics, 'политика'),
+    (culture, 'культура'),
+    (economics, 'экономика'),
+    (science, 'наука'),
+    (sport, 'спорт')
+
+]
+
+class Post(models.Model):
+    author = models.ForeignKey('Author', on_delete=models.CASCADE)
+    categoryType = models.CharField(max_length=80, choices=POST_TYPES, default=news)
+    date_create = models.DateTimeField(auto_now_add=True)
+    categories = models.ManyToManyField('Category', through='PostCategory')
+    title = models.CharField(max_length=150)
+    show_title = models.CharField(max_length=100)
+    text = models.TextField()
+    rating = models.SmallIntegerField(default=0)
+
+    def like(self):
+        self.rating += 1
+        self.save()
+
+    def dislike(self):
+        self.rating -= 1
+        self.save()
+
+    def preview(self):
+        return self.text[0:128]+'...'
+
+
+
+
+class Comment(models.Model):
+    commentPost = models.ForeignKey(Post, on_delete=models.CASCADE)
+    commentUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    date_create = models.DateTimeField(auto_now_add=True)
+    rating = models.SmallIntegerField(default=0)
+
+
+    def like(self):
+        self.rating += 1
+        self.save()
+
+    def dislike(self):
+        self.rating -= 1
+        self.save()
+
+class Category(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+
+
+class PostCategory(models.Model):
+    postLink = models.ForeignKey(Post, on_delete=models.CASCADE)
+    CategoryLink = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+class Author(models.Model):
+    Author_User = models.OneToOneField(User, on_delete=models.CASCADE)
+    rating = models.SmallIntegerField(default=0)
+
+
+    def update_rating(self):
+        author_post_rating = Post.objects.filter(author_id=self.pk).aggregate(r1=Coalesce(Sum('rating'), 0))['r1']
+        author_comments_rating = Comment.objects.filter(commentUser_id=self.Author_User).aggregate(r2=Coalesce(Sum('rating'), 0))['r2']
+        author_post_commits_rating = Comment.objects.filter(commentUser_id=self.Author_User).aggregate(r3=Coalesce(Sum('rating'), 0))['r3']
+        self.rating = author_post_rating*3+author_comments_rating+author_post_commits_rating
+        self.save()
+
+class SubscribersCategory(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
