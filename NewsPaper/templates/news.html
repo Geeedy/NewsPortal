@@ -16,7 +16,7 @@ News
            </tr>
            {% for p in news %}
            <tr>
-               <td align="left "><a>{{ p.title}}</a></td>
+               <td align="left "><a href="{% url 'new_detail' p.pk %}">{{ p.title}}</a></td>
                <td align="left ">{{ p.date_create}} </td>
                <td align="left ">{{ p.text | truncatechars:20}}</td>
            </tr>

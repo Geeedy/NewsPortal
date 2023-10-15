@@ -1,0 +1,30 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+
+{% block title %}
+{{ new.title}}
+{% endblock title %}
+
+
+{% block content %}
+<h3>{{ new.title}}</h3>
+<hr>
+{% if new %}
+        <body>
+            <div align="left">
+                <div>
+                   <h5><i>{{ new.text }}</i></h5>
+                </div>
+                <hr>
+                <div>
+                    <small> Опубликовано: </small>
+                    <p>{{ new.date_create |date:'d.m.Y / H:i'}}</p>
+                </div>
+
+            </div>
+        </body>
+
+{% else %}
+       <h2>Новости нет!</h2>
+{% endif %}
+{% endblock content %}
