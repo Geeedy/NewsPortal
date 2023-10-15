@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+<html lang="en">
+       <table class="table table-striped">
+           <tr>
+               <td><b>Заголовок</b></td>
+               <td><b>Дата публикации</b></td>
+               <td><b>Текст статьи</b></td>
+
+           </tr>
+           {% for p in news %}
+           <tr>
+               <td align="left "><a>{{ p.title}}</a></td>
+               <td align="left ">{{ p.date_create}} </td>
+               <td align="left ">{{ p.text | truncatechars:20}}</td>
+           </tr>
+           {% endfor %}
+           {% endblock content %}
+</html>

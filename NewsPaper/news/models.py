@@ -18,6 +18,7 @@ culture = 'CU'
 economics = 'EC'
 science = 'SC'
 sport = 'SP'
+another = 'AN'
 
 CATEGORY_NEWS = [
     (world_events, 'мировые события'),
@@ -25,7 +26,8 @@ CATEGORY_NEWS = [
     (culture, 'культура'),
     (economics, 'экономика'),
     (science, 'наука'),
-    (sport, 'спорт')
+    (sport, 'спорт'),
+    (another, 'другое'),
 
 ]
 
@@ -70,7 +72,7 @@ class Comment(models.Model):
         self.save()
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255, choices=CATEGORY_NEWS, default=another, unique=True)
 
 
 class PostCategory(models.Model):
