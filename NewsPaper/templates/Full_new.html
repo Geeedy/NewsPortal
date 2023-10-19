@@ -1,19 +1,20 @@
 {% extends 'flatpages/default.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block title %}
-{{ new.title}}
+{{ new.title | censor}}
 {% endblock title %}
 
 
 {% block content %}
-<h3>{{ new.title}}</h3>
+<h3>{{ new.title | censor}}</h3>
 <hr>
 {% if new %}
         <body>
             <div align="left">
                 <div>
-                   <h5><i>{{ new.text }}</i></h5>
+                   <h5><i>{{ new.text|censor}}</i></h5>
                 </div>
                 <hr>
                 <div>

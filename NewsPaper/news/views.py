@@ -2,7 +2,6 @@ from django.views.generic import ListView, DetailView
 from .models import Post
 from django.core.cache import cache
 
-
 class NewsList(ListView):
     model = Post
     ordering = '-date_create'
