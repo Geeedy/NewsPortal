@@ -3,7 +3,7 @@ from .models import Post
 from django.core.cache import cache
 from .filters import NewsFilter
 
-paginator_count = 1
+paginator_count = 2
 
 class NewsList(ListView):
     model = Post

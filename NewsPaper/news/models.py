@@ -31,6 +31,10 @@ CATEGORY_NEWS = [
 
 ]
 
+class Author(models.Model):
+    Author_User = models.OneToOneField(User, on_delete=models.CASCADE)
+    rating = models.SmallIntegerField(default=0)
+
 class Post(models.Model):
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
     categoryType = models.CharField(max_length=80, choices=POST_TYPES, default=news)
@@ -40,6 +44,7 @@ class Post(models.Model):
     show_title = models.CharField(max_length=100)
     text = models.TextField()
     rating = models.SmallIntegerField(default=0)
+
 
     def like(self):
         self.rating += 1
@@ -79,9 +84,7 @@ class PostCategory(models.Model):
     postLink = models.ForeignKey(Post, on_delete=models.CASCADE)
     CategoryLink = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-class Author(models.Model):
-    Author_User = models.OneToOneField(User, on_delete=models.CASCADE)
-    rating = models.SmallIntegerField(default=0)
+
 
 
     def update_rating(self):
