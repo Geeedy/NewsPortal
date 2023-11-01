@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
+from django.urls import reverse
+
 
 
 news = 'NS'
@@ -57,6 +59,9 @@ class Post(models.Model):
     def preview(self):
         return self.text[0:128]+'...'
 
+    def get_absolute_url(self):
+        return reverse('new_detail', args=[str(self.id)])
+
 
 
 
@@ -78,6 +83,14 @@ class Comment(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255, choices=CATEGORY_NEWS, default=another, unique=True)
+
+    subscribers = models.ManyToManyField(User, through='SubscribersCategory')  # категории публикаций
+
+    def __str__(self):
+        return self.name  # return self.name.title()
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'cat_id': self.pk})
 
 
 class PostCategory(models.Model):

@@ -21,6 +21,10 @@
                     <small> Опубликовано: </small>
                     <p>{{ new.date_create |date:'d.m.Y / H:i'}}</p>
                 </div>
+                {% if new.author.Author_User.username == user.get_username  %}
+                <button> <a class="nav-link" href="edit/">Редактировать</a> </button>
+                <button> <a class="nav-link" href="delete/">Удалить</a> </button>
+                {% endif %}
 
             </div>
         </body>

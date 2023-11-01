@@ -1,9 +1,17 @@
-from django.views.generic import ListView, DetailView
-from .models import Post
+from datetime import timedelta
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.utils import timezone
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.cache import cache
 from .filters import NewsFilter
+from .forms import PostForm
+from .models import Post, Author, POST_TYPES, news as string_news, article as string_article
+import pytz
 
-paginator_count = 2
+paginator_count = 10
 
 class NewsList(ListView):
     model = Post
@@ -43,3 +51,76 @@ class Search(ListView):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
         return context
+
+class NewsCreate(PermissionRequiredMixin, CreateView):
+    permission_required = ('news_create',)
+    form_class = PostForm
+    model = Post
+    template_name = 'post_edit.html'
+
+    def form_valid(self, form):
+        news = form.save(commit=False)
+        news.categoryType = string_news
+        try:
+            author1 = Author.objects.get(Author_User=self.request.user)
+            news.author = author1
+        except ObjectDoesNotExist:
+            author1=Author()
+            author1.Author_User=self.request.user
+            author1.save()
+            news.author = author1
+
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['show_title'] = ('Создание новости:')
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
+
+class ArticleCreate(PermissionRequiredMixin, CreateView):
+    permission_required = ('news.add_post',)
+    form_class = PostForm
+    model = Post
+    template_name = 'post_edit.html'
+
+    def form_valid(self, form):
+        news = form.save(commit=False)
+        news.categoryType = string_article
+        try:
+            author1 = Author.objects.get(Author_User=self.request.user)
+            news.author = author1
+        except ObjectDoesNotExist:
+            author1 = Author()
+            author1.Author_User = self.request.user
+            author1.save()
+            news.author = author1
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['show_title'] = ('Создание статьи:')
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
+
+class PostEdit(PermissionRequiredMixin, UpdateView):
+    permission_required = ('news.change_post',)
+    form_class = PostForm
+    model = Post
+    template_name = 'post_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['show_title'] = ('Редактирование новости:')
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        return context
+
+
+class PostDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('news.delete_post',)
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('news_list')
