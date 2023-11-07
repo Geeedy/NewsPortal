@@ -1,7 +1,5 @@
-from datetime import timedelta
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -10,6 +8,9 @@ from .filters import NewsFilter
 from .forms import PostForm
 from .models import Post, Author, POST_TYPES, news as string_news, article as string_article
 import pytz
+from django.contrib.auth.models import User
+from django.views.generic.edit import CreateView
+from .models import BaseRegisterForm
 
 paginator_count = 10
 
@@ -52,7 +53,7 @@ class Search(ListView):
         context['filterset'] = self.filterset
         return context
 
-class NewsCreate(PermissionRequiredMixin, CreateView):
+class NewsCreate(LoginRequiredMixin, CreateView):
     permission_required = ('news_create',)
     form_class = PostForm
     model = Post
@@ -79,7 +80,7 @@ class NewsCreate(PermissionRequiredMixin, CreateView):
         context['timezones'] = pytz.common_timezones
         return context
 
-class ArticleCreate(PermissionRequiredMixin, CreateView):
+class ArticleCreate(LoginRequiredMixin, CreateView):
     permission_required = ('news.add_post',)
     form_class = PostForm
     model = Post
@@ -105,7 +106,7 @@ class ArticleCreate(PermissionRequiredMixin, CreateView):
         context['timezones'] = pytz.common_timezones
         return context
 
-class PostEdit(PermissionRequiredMixin, UpdateView):
+class PostEdit(LoginRequiredMixin, UpdateView):
     permission_required = ('news.change_post',)
     form_class = PostForm
     model = Post
@@ -119,8 +120,13 @@ class PostEdit(PermissionRequiredMixin, UpdateView):
         return context
 
 
-class PostDelete(PermissionRequiredMixin, DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     permission_required = ('news.delete_post',)
     model = Post
     template_name = 'post_delete.html'
     success_url = reverse_lazy('news_list')
+
+class BaseRegisterView(CreateView):
+    model = User
+    form_class = BaseRegisterForm
+    success_url = '/'
