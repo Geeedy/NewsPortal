@@ -11,6 +11,39 @@ import pytz
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView
 from .models import BaseRegisterForm
+from django.views.generic.detail import DetailView
+
+
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy
+from datetime import datetime, timedelta
+from django.views import View
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from requests import request
+
+from .filters import *
+from .forms import *
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.utils import timezone
+import pytz
+from django.utils.translation import gettext as _
+from django.utils import timezone
+from .models import Post, POST_TYPES, news as string_news, article as string_article
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+from django.core.mail import EmailMultiAlternatives  # импортируем класс для создание объекта письма с html
+from django.template.loader import render_to_string
+#from django.core.cache import cache
+#from .tasks import *
+#from django.views.decorators.cache import cache_page
+#from django.utils.translation import gettext as _
+import logging
+from django.core.management.utils import get_random_secret_key
 
 paginator_count = 10
 
@@ -129,4 +162,41 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 class BaseRegisterView(CreateView):
     model = User
     form_class = BaseRegisterForm
-    success_url = '/'
+    success_url = reverse_lazy('news_list')
+    template_name = 'user_edit.html'
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('news_list')
+
+class UserDataUpdate(LoginRequiredMixin, UpdateView):
+    form_class = UserDataForm
+    model = User
+    template_name = 'user_edit.html'
+    success_url = reverse_lazy('news_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Редактирование данных пользователя:')
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
+        context['is_not_authors'] = not self.request.user.groups.filter(name='authors').exists()
+        return context
+
+    def get_object(self):
+        return self.request.user
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('news_list')
+
+@login_required
+def upgrade_me(request):
+    user = request.user
+    authors_group = Group.objects.get(name='authors')
+    if not request.user.groups.filter(name='authors').exists():
+        authors_group.user_set.add(user)
+    Author.objects.create(Author_User=user)
+    return redirect('news_list')

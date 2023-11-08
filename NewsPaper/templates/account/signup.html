@@ -1,0 +1,35 @@
+{% extends 'flatpages/default.html' %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Регистрация" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Регистрация" %}</h1>
+
+<p>{% blocktrans %}Уже есть учетная запись? Тогда пожалуйста <a href="{{ login_url }}">войдите</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit">{% trans "Зарегистрироваться &raquo;" %}</button>
+</form>
+
+
+<hr>
+
+<h5>{% trans "Зарегистрироваться с помощью:" %}</h5>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="signup" %}
+  </ul>
+
+
+</div>
+
+{% endblock %}

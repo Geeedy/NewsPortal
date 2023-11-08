@@ -1,5 +1,12 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 
 {% block content %}
-<h2> Вы вышли из системы </h2>
+<h2> {% trans "Выход из системы" %} </h2>
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>{% trans "Вы вышли из системы" %}</p>
+
+</form>
 {% endblock %}
