@@ -1,25 +1,19 @@
-import pytz
-from django.contrib.auth import logout, login
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import Group
-from django.core.cache import cache
-from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from django.utils import timezone
-from django.utils.translation import gettext as _
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from django.core.cache import cache
+from django.shortcuts import render, redirect, reverse
+from django.urls import reverse_lazy
+from django.core.exceptions import ObjectDoesNotExist
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .filters import *
 from .forms import *
-from .models import *
-from .models import news as string_news, article as string_article
-
-#from django.core.cache import cache
-#from .tasks import *
-#from django.views.decorators.cache import cache_page
-#from django.utils.translation import gettext as _
+import pytz
+from django.utils.translation import gettext as _
+from django.utils import timezone
+from .models import Post, POST_TYPES, news as string_news, article as string_article
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 
 paginator_count = 10
 
