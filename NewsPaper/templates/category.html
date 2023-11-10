@@ -1,0 +1,30 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+
+<html lang="en">
+       <table class="table table-striped">
+           <tr>
+               <td><b>Категория</b></td>
+               <td><b>Подписка</b></td>
+
+
+           </tr>
+           {% for c in categories %}
+           <tr>
+               <td><a>{{ c.name | censor}}</a></td>
+                    {% if user in c.subscribers.filter %}
+                        <td><button> <a href="{% url 'unsubscribe' c.pk %}"> Отписаться </a> </button></td>
+                    {% else %}
+                        <td><button> <a href="{% url 'subscribe' c.pk %}">  Подписаться </a> </button></td>
+                    {% endif %}
+           </tr>
+           {% endfor %}
+
+{% endblock content %}

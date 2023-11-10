@@ -1,49 +1,25 @@
+import pytz
+from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import Group
+from django.core.cache import cache
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.core.cache import cache
-from .filters import NewsFilter
-from .forms import PostForm
-from .models import Post, Author, POST_TYPES, news as string_news, article as string_article
-import pytz
-from django.contrib.auth.models import User
-from django.views.generic.edit import CreateView
-from .models import BaseRegisterForm
-from django.views.generic.detail import DetailView
-
-
-from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse_lazy
-from datetime import datetime, timedelta
-from django.views import View
-from django.core.exceptions import ObjectDoesNotExist
-from django.core.mail import send_mail
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from requests import request
 
 from .filters import *
 from .forms import *
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.utils import timezone
-import pytz
-from django.utils.translation import gettext as _
-from django.utils import timezone
-from .models import Post, POST_TYPES, news as string_news, article as string_article
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.contrib.auth import logout, login
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
-from django.core.mail import EmailMultiAlternatives  # импортируем класс для создание объекта письма с html
-from django.template.loader import render_to_string
+from .models import *
+from .models import news as string_news, article as string_article
+
 #from django.core.cache import cache
 #from .tasks import *
 #from django.views.decorators.cache import cache_page
 #from django.utils.translation import gettext as _
-import logging
-from django.core.management.utils import get_random_secret_key
 
 paginator_count = 10
 
@@ -54,6 +30,14 @@ class NewsList(ListView):
     template_name = 'news.html'
     context_object_name = 'news'
     paginate_by = paginator_count
+
+class CategoryList(ListView):
+    model = Category
+    template_name = 'category.html'
+    context_object_name = 'categories'
+
+
+
 
 class NewDetail(DetailView):
     model = Post
@@ -200,3 +184,19 @@ def upgrade_me(request):
         authors_group.user_set.add(user)
     Author.objects.create(Author_User=user)
     return redirect('news_list')
+
+@login_required
+def subscribe_on_cat(request, cat_id):
+    user = request.user.id
+    cat = Category(id=cat_id)
+    cat.subscribers.add(user)
+    return redirect('category')
+
+
+
+@login_required
+def unsubscribe_cat(request, cat_id):
+    user = request.user.id
+    cat = Category(id=cat_id)
+    cat.subscribers.remove(user)
+    return redirect('category')

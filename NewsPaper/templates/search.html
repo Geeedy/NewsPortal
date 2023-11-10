@@ -19,6 +19,8 @@ News
        <input type="submit" value="Найти" />
    </form>
 
+
+
        <table class="table table-striped">
            <tr>
                <td><b>Заголовок</b></td>
@@ -31,6 +33,7 @@ News
                <td align="left "><a href="{% url 'new_detail' p.pk %}">{{ p.title | censor}}</a></td>
                <td align="left ">{{ p.date_create}} </td>
                <td align="left ">{{ p.text | censor| truncatechars:20}}</td>
+
            </tr>
            {% endfor %}
 

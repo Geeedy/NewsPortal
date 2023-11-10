@@ -1,12 +1,10 @@
-from django.db import models
-from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db import models
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.urls import reverse
-
-
 
 news = 'NS'
 article = 'AR'
@@ -35,9 +33,7 @@ CATEGORY_NEWS = [
 
 ]
 
-class Author(models.Model):
-    Author_User = models.OneToOneField(User, on_delete=models.CASCADE)
-    rating = models.SmallIntegerField(default=0)
+
 
 class Post(models.Model):
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
@@ -85,11 +81,10 @@ class Comment(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255, choices=CATEGORY_NEWS, default=another, unique=True)
-
-    subscribers = models.ManyToManyField(User, through='SubscribersCategory')  # категории публикаций
+    subscribers = models.ManyToManyField(User, through='SubscribersCategory')
 
     def __str__(self):
-        return self.name  # return self.name.title()
+        return self.name
 
     def get_absolute_url(self):
         return reverse('category', kwargs={'cat_id': self.pk})
@@ -99,15 +94,6 @@ class PostCategory(models.Model):
     postLink = models.ForeignKey(Post, on_delete=models.CASCADE)
     CategoryLink = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-
-
-
-    def update_rating(self):
-        author_post_rating = Post.objects.filter(author_id=self.pk).aggregate(r1=Coalesce(Sum('rating'), 0))['r1']
-        author_comments_rating = Comment.objects.filter(commentUser_id=self.Author_User).aggregate(r2=Coalesce(Sum('rating'), 0))['r2']
-        author_post_commits_rating = Comment.objects.filter(commentUser_id=self.Author_User).aggregate(r3=Coalesce(Sum('rating'), 0))['r3']
-        self.rating = author_post_rating*3+author_comments_rating+author_post_commits_rating
-        self.save()
 
 class SubscribersCategory(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -129,5 +115,16 @@ class BaseRegisterForm(UserCreationForm):
                   "password2", )
 
 
+class Author(models.Model):
+    Author_User = models.OneToOneField(User, on_delete=models.CASCADE)
+    rating = models.SmallIntegerField(default=0)
 
+    def update_rating(self):
+        author_post_rating = Post.objects.filter(author_id=self.pk).aggregate(r1=Coalesce(Sum('rating'), 0))['r1']
+        author_comments_rating = \
+        Comment.objects.filter(commentUser_id=self.Author_User).aggregate(r2=Coalesce(Sum('rating'), 0))['r2']
+        author_post_commits_rating = \
+        Comment.objects.filter(commentUser_id=self.Author_User).aggregate(r3=Coalesce(Sum('rating'), 0))['r3']
+        self.rating = author_post_rating * 3 + author_comments_rating + author_post_commits_rating
+        self.save()
 

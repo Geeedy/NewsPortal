@@ -1,8 +1,8 @@
-from django import forms
-from .models import *
 from allauth.account.forms import SignupForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import Group
+
+from .models import *
 
 
 class PostForm(forms.ModelForm):

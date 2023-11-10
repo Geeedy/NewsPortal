@@ -1,9 +1,8 @@
-from django.urls import path
-from django.urls import include
-from .views import *
 from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import include
+from django.urls import path
 
-
+from .views import *
 
 urlpatterns = [
    path('', NewsList.as_view(), name='news_list'),
@@ -27,6 +26,11 @@ urlpatterns = [
    path('accounts/', include('allauth.urls')),
    path('user/edit/', UserDataUpdate.as_view(), name='user_edit'),
    path('user/edit/upgrade/', upgrade_me, name='upgrade_user'),
+   path('category/', CategoryList.as_view(), name='category'),
+   # path('category/subscribe', subscribe_on_cat, name='subscribe'),
+   # path('category/unsubscribe', unsubscribe_cat, name='unsubscribe'),
+   path('category/<int:cat_id>/subscribe', subscribe_on_cat, name='subscribe'),
+   path('category/<int:cat_id>/unsubscribe', unsubscribe_cat, name='unsubscribe'),
 
 
 ]
