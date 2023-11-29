@@ -1,0 +1,1 @@
+2023-11-29 01:14:46,711 WARNING [django.security.csrf:241] Forbidden (Origin checking failed - null does not match any trusted origins.): /news/create/

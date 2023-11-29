@@ -1,0 +1,240 @@
+2023-11-29 01:00:16,313 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:00:16,394 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:00:52,135 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:00:52,198 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:00:52,890 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:00:52,983 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:00:53,421 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:00:53,482 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:00:53,827 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:00:53,890 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:00:56,778 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:00:56,841 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:08,288 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:08,350 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:10,146 ERROR [django.request:241] Internal Server Error: /articles/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:10,206 ERROR [django.server:212] "GET /articles/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:13,827 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:13,894 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:16,527 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:16,591 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:17,525 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:17,588 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:18,046 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:18,107 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:18,261 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:18,323 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:18,440 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:18,502 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
+2023-11-29 01:01:18,603 ERROR [django.request:241] Internal Server Error: /news/create/
+Traceback (most recent call last):
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/geedy/.var/app/com.jetbrains.PyCharm-Community/data/python/lib/python3.10/site-packages/django/template/loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: post_edit.html
+2023-11-29 01:01:18,664 ERROR [django.server:212] "GET /news/create/ HTTP/1.1" 500 145
